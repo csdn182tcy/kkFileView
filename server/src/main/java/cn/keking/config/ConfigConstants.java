@@ -67,6 +67,7 @@ public class ConfigConstants {
     private static String homePagination;
     private static String homePageSize;
     private static String homeSearch;
+    private static Boolean homeEnabled;
     private static int pdfTimeout;
     private static int pdfTimeout80;
     private static int pdfTimeout200;
@@ -111,6 +112,7 @@ public class ConfigConstants {
     public static final String DEFAULT_HOME_PAGINATION = "true";
     public static final String DEFAULT_HOME_PAGSIZE = "15";
     public static final String DEFAULT_HOME_SEARCH = "true";
+    public static final String DEFAULT_HOME_ENABLED = "true";
     public static final String DEFAULT_PDF_TIMEOUT = "90";
     public static final String DEFAULT_PDF_TIMEOUT80 = "180";
     public static final String DEFAULT_PDF_TIMEOUT200 = "300";
@@ -810,6 +812,19 @@ public class ConfigConstants {
 
     public static void setHomeSearchValue(String homeSearch) {
         ConfigConstants.homeSearch = homeSearch;
+    }
+
+    public static Boolean getHomeEnabled() {
+        return homeEnabled;
+    }
+
+    @Value("${home.enabled:true}")
+    public void setHomeEnabled(Boolean homeEnabled) {
+        setHomeEnabledValue(homeEnabled);
+    }
+
+    public static void setHomeEnabledValue(Boolean homeEnabled) {
+        ConfigConstants.homeEnabled = homeEnabled;
     }
 
 }

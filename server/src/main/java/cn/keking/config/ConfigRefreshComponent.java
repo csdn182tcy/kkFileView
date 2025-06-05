@@ -78,6 +78,7 @@ public class ConfigRefreshComponent {
                 String homePagination;
                 String homePageSize;
                 String homeSearch;
+                boolean homeEnabled;
                 int pdfTimeout;
                 int pdfTimeout80;
                 int pdfTimeout200;
@@ -129,6 +130,7 @@ public class ConfigRefreshComponent {
                     homePagination = properties.getProperty("home.pagination", ConfigConstants.DEFAULT_HOME_PAGINATION);
                     homePageSize = properties.getProperty("home.pagesize", ConfigConstants.DEFAULT_HOME_PAGSIZE);
                     homeSearch = properties.getProperty("home.search", ConfigConstants.DEFAULT_HOME_SEARCH);
+                    homeEnabled = Boolean.parseBoolean(properties.getProperty("home.enabled", ConfigConstants.DEFAULT_HOME_ENABLED));
                     cadThread = Integer.parseInt(properties.getProperty("cad.thread", ConfigConstants.DEFAULT_CAD_THREAD));
                     pdfTimeout = Integer.parseInt(properties.getProperty("pdf.timeout", ConfigConstants.DEFAULT_PDF_TIMEOUT));
                     pdfTimeout80 = Integer.parseInt(properties.getProperty("pdf.timeout80", ConfigConstants.DEFAULT_PDF_TIMEOUT80));
@@ -177,6 +179,7 @@ public class ConfigRefreshComponent {
                     ConfigConstants.setHomePaginationValue(homePagination);
                     ConfigConstants.setHomePageSizeValue(homePageSize);
                     ConfigConstants.setHomeSearchValue(homeSearch);
+                    ConfigConstants.setHomeEnabledValue(homeEnabled);
                     ConfigConstants.setPdfTimeoutValue(pdfTimeout);
                     ConfigConstants.setPdfTimeout80Value(pdfTimeout80);
                     ConfigConstants.setPdfTimeout200Value(pdfTimeout200);
