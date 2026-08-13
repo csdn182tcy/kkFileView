@@ -1,5 +1,7 @@
 package cn.keking.config;
 
+import cn.keking.config.PreviewAuthProperties;
+import cn.keking.utils.RoadflowTokenValidator;
 import cn.keking.web.filter.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,18 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/","classpath:/resources/","classpath:/static/","classpath:/public/","file:" + filePath);
     }
 
+
+    @Bean
+    public FilterRegistrationBean<RoadflowTokenAuthFilter> getRoadflowTokenAuthFilter(
+            PreviewAuthProperties previewAuthProperties,
+            RoadflowTokenValidator roadflowTokenValidator) {
+        RoadflowTokenAuthFilter filter = new RoadflowTokenAuthFilter(previewAuthProperties, roadflowTokenValidator);
+        FilterRegistrationBean<RoadflowTokenAuthFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(filter);
+        registrationBean.addUrlPatterns("/*");
+        registrationBean.setOrder(5);
+        return registrationBean;
+    }
 
     @Bean
     public FilterRegistrationBean<ChinesePathFilter> getChinesePathFilter() {
